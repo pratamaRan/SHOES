@@ -7,7 +7,7 @@
             </div>
         </section>
         <section class="w-1/2 h-full flex items-center justify-center bg-[url('assets/img/shoesimg/rounded-abs.png')] bg-no-repeat bg-center bg-[length:400px_400px]">
-            <img src="~/assets/img/shoesimg/200.png" alt="Image of Shoes" class="h-72]">
+            <img src="~/assets/img/shoesimg/200.png" alt="Image of Shoes" class="h-72 animate-wiggle">
         </section>
     </main>
 </template>

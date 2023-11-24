@@ -1,7 +1,13 @@
 <script lang="ts" setup>
-    import { category } from "~/composables/constants/category";
-    const isShow = ref(false);
-    defineEmits(["selectedCategory"]);
+import { useCategoryStore } from '~/stores/category';
+const category = useCategoryStore();
+const allCategory = ref([]);
+
+category.getAllCategory().then(() => {
+    allCategory.value = category.categories;
+})
+const isShow = ref(false);
+defineEmits(["selectedCategory"]);
 </script>
 
 <template>
@@ -13,18 +19,13 @@
             duration-300 ${isShow ? 'rotate-180' : 'rotate-0'}`"></i>
         </div>
         <!-- Dropdown menu -->
-        <div v-show="isShow" class="z-10 bg-white divide-y divide-gray-100 rounded-lg
-        shadow-xl w-full absolute top-14">
+        <div v-show="isShow" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-full absolute top-14">
             <ul class="py-2 text-sm text-gray-700">
                 <li>
-                    <span class="block px-4 py-2 hover:bg-primary hover:text-white
-                    transition duration-200 cursor-pointer" @click="$emit('selectedCategory',
-                    '')">All</span>
+                    <span class="block px-4 py-2 hover:bg-primary hover:text-white transition duration-200 cursor-pointer" @click="$emit('selectedCategory', '')">All</span>
                 </li>
-                <li v-for="(item, index) in category" :key="index">
-                    <span class="block px-4 py-2 hover:bg-primary hover:text-white
-                    transition duration-200 cursor-pointer" @click="$emit('selectedCategory',
-                    item.name)">{{ item?.name }}</span>
+                <li v-for="(item, index) in allCategory" :key="index">
+                    <span class="block px-4 py-2 hover:bg-primary hover:text-white transition duration-200 cursor-pointer" @click="$emit('selectedCategory', item.name)">{{ item.name }}</span>
                 </li>
             </ul>
         </div>
