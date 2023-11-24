@@ -1,5 +1,5 @@
 <template>
-    <main class="flex items-center h-[28.35rem]">
+    <main class="flex items-center h-[28.35rem] bg-slate-500">
         <section class="w-1/2 h-full p-6 flex items-center justify-center">
             <div>
                 <h1 class="font-bold text-4xl p-2 bg-white">#Shoes Shop</h1>
